@@ -1,0 +1,16 @@
+{
+  "name": "thumbnail-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "python -m unittest discover -s tests -v",
+    "import": "python -m thumbnail_library import",
+    "start": "python -m thumbnail_library serve",
+    "capture": "node scripts/capture.mjs",
+    "verify-ui": "node scripts/verify-ui.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

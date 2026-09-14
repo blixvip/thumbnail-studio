@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thumbnail Library</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/"><span class="brand-icon">↗</span> THUMBNAIL<span class="muted">/</span>LIBRARY</a><span class="local"><i></i> Saved on this computer</span></header>
+  <div class="layout">
+    <aside>
+      <p class="eyebrow">YOUR COLLECTION</p>
+      <button class="source active" id="all-sources"><span>All sources</span><span id="all-count">—</span></button>
+      <div id="sources"></div>
+      <div class="sidebar-note"><span class="tiny-label">REFERENCE COLLECTION</span><p>Real work. Saved locally.<br>Keep what catches your eye.</p><details><summary>Import details</summary><div id="import-details"></div></details></div>
+    </aside>
+    <main>
+      <div class="heading"><div><p class="eyebrow">THE START OF YOUR NEXT IDEA</p><h1>Good thumbnails.<br><span>A little closer.</span></h1></div><div class="collection-stat"><strong id="total">—</strong><span>unique images collected</span></div></div>
+      <div class="toolbar"><div class="tabs" aria-label="Image filter"><button class="active" data-filter="all" aria-pressed="true">All photos</button><button data-filter="thumbnail" aria-pressed="false">Thumbnails</button><button data-filter="favorites" aria-pressed="false">Favorites</button></div><label class="search"><span aria-hidden="true">⌕</span><input type="search" id="search" aria-label="Search images" placeholder="Search collection…"></label></div>
+      <div class="results-line"><p id="result-count" role="status">Loading your collection…</p><span>IMPORTED ORIGINALS</span></div>
+      <div id="gallery" class="gallery" aria-busy="true"></div>
+      <div id="empty" class="empty" hidden><h2>No matching images</h2><p>Try another source or search term.</p></div>
+      <div class="load-wrap"><button id="more" hidden>Show more images</button></div>
+      <footer>Thumbnail Generator <span>·</span> Local reference library</footer>
+    </main>
+  </div>
+  <dialog id="preview">
+    <div class="dialog-bar"><span id="preview-label">Image preview</span><button id="close" aria-label="Close preview">✕</button></div>
+    <img id="preview-image" alt="">
+    <div class="dialog-meta"><div><h2 id="preview-title"></h2><p id="dimensions"></p></div><a id="original" class="primary" download>Save original ↗</a></div>
+    <div id="provenance"></div>
+  </dialog>
+</body>
+</html>

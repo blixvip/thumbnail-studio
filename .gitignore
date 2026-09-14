@@ -23,3 +23,7 @@ tmp/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Imported media and local browser verification
+data/
+artifacts/

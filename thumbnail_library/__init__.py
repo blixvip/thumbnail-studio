@@ -1,0 +1,1 @@
+"""Local thumbnail image collection."""
