@@ -200,19 +200,25 @@ async function boot() {
   });
   win.contentView.addChildView(chat);
   protect(chat.webContents);
-  chat.webContents.on("did-start-loading", () => {
-    status({ status: "loading" });
-    layout();
+  // Loading also fires for history changes and background frames. Only a new
+  // top-level document should replace the usable page with our loading screen.
+  chat.webContents.on("did-start-navigation", (_event, _url, inPlace, mainFrame) => {
+    if (mainFrame && !inPlace) {
+      status({ status: "loading" });
+      layout();
+    }
   });
-  chat.webContents.on("did-finish-load", () => {
+  const documentReady = () => {
     // Chromium can finish painting its error document after did-fail-load.
     if (state.status === "error") return;
     const url = chat.webContents.getURL();
     status({
-      status: isChatNavigation(url) || (QA && url === CHAT) ? "ready" : "error",
+      status: isChatNavigation(url) || (QA && url.split("#")[0] === CHAT) ? "ready" : "error",
     });
     layout();
-  });
+  };
+  chat.webContents.on("dom-ready", documentReady);
+  chat.webContents.on("did-finish-load", documentReady);
   chat.webContents.on(
     "did-fail-load",
     (_event, code, _description, _url, mainFrame) => {

@@ -3,7 +3,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const executable = require("./find-electron.cjs")(root);
 if (!executable) {
-  console.error("Electron is missing. Run npm install, then npm run desktop.");
+  console.error("Electron is missing. Run npm ci, npm run install:electron, then npm run desktop.");
   process.exit(1);
 }
 const env = { ...process.env };

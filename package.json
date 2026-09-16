@@ -5,6 +5,7 @@
   "main": "desktop/main.cjs",
   "type": "module",
   "scripts": {
+    "install:electron": "node node_modules/electron/install.js",
     "desktop": "node scripts/launch-desktop.cjs",
     "test:desktop": "node --test tests/desktop.test.cjs tests/design-skills.test.cjs",
     "verify:desktop": "node scripts/verify-desktop.mjs",

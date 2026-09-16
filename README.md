@@ -14,6 +14,7 @@ Requires **Windows**, **Node.js 24+**, and **Git**. The desktop app needs no API
 git clone https://github.com/blixvip/thumbnail-studio.git
 cd thumbnail-studio
 npm ci
+npm run install:electron
 npm run desktop
 ```
 
@@ -60,7 +61,7 @@ The optional importer requires Python 3.11+, Pillow, and Google Chrome. [Import 
 - ChatGPT handles its own authentication and may request verification. Your regular browser's cookies are not copied into the app.
 - The app requests a 100 MB browser disk-cache limit; this does not cap downloaded images, imported references, or all profile storage.
 
-To reuse an existing compatible Electron runtime, set `THUMBNAIL_ELECTRON` to its absolute executable path. The optional `.desktop-runtime.json` local file can also point to an existing runtime; it is excluded from Git. Normal `npm ci` installs the pinned runtime.
+To reuse an existing compatible Electron runtime, set `THUMBNAIL_ELECTRON` to its absolute executable path and skip `install:electron`. The optional `.desktop-runtime.json` local file can also point to an existing runtime; it is excluded from Git. `npm ci` installs dependencies; `npm run install:electron` downloads the pinned desktop runtime.
 
 ## Verification
 
@@ -74,6 +75,6 @@ npm audit
 
 The Python tests cover the importer. Node tests cover navigation restrictions, media paths, responsive layout bounds, and design-prompt validation. Electron checks use synthetic reference images, a disposable profile, and a local chat stand-in; they verify layout, copying, favorites, filtering, failure recovery, design skills, and brief persistence. They do not send ChatGPT messages or alter the OS clipboard.
 
-`node scripts/verify-chatgpt.mjs` separately opens the real sign-in page without credentials or messages. It requires internet access and checks loading, not successful authentication or image generation.
+`node scripts/verify-chatgpt.mjs` separately checks the real page stays visible after background loading and same-document navigation, and accepts keyboard edits. It uses a disposable profile and submits no credentials or messages. A human-verification challenge blocks this check; successful authentication and image generation are not covered.
 
 Brand assets and interface guidance are in [`docs/brand/`](docs/brand/). No project-wide redistribution license has been assigned.

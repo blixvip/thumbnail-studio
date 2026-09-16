@@ -1,5 +1,5 @@
 import { _electron as electron } from "playwright";
-import { existsSync } from "node:fs";
+import assert from "node:assert/strict";
 import { mkdtemp, rm, mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import os from "node:os";
@@ -26,26 +26,34 @@ try {
     await new Promise((resolve) => setTimeout(resolve, 100));
   }
   await page.locator(".brand").waitFor();
-  const deadline = Date.now() + 45000;
-  let result;
-  do {
-    result = await app.evaluate(async ({ webContents }) => {
-      const remote = webContents
-        .getAllWebContents()
-        .find((w) => w.getURL().startsWith("https://"));
-      if (!remote) return null;
-      return {
-        url: remote.getURL(),
-        title: remote.getTitle(),
-        loading: remote.isLoading(),
-        text: await remote
-          .executeJavaScript("document.body?.innerText?.slice(0,1800)")
-          .catch(() => null),
-      };
-    });
-    if (result?.text && !result.loading) break;
-    await page.waitForTimeout(1000);
-  } while (Date.now() < deadline);
+  await page.waitForFunction(() => document.body.classList.contains("has-chat"));
+  // Give ChatGPT's background frames and SPA navigation time to settle. These
+  // previously hid the native view after the initial successful page load.
+  await page.waitForTimeout(5000);
+  async function assertVisible() {
+    assert.equal((await page.evaluate(() => window.thumbnail.status())).status, "ready");
+    assert(await app.evaluate(({ BrowserWindow }) => {
+      const view = BrowserWindow.getAllWindows()[0].contentView.children.find(v => v.webContents);
+      return view.getVisible();
+    }), "The real native ChatGPT view must be visible");
+  }
+  await assertVisible();
+  const remotePage = app.windows().find(p => p.url().startsWith("https://"));
+  assert(remotePage, "ChatGPT page must exist");
+  const email = remotePage.locator('input[type="email"]');
+  const composer = remotePage.locator('[contenteditable="true"], textarea').first();
+  const input = await email.count() ? email : composer;
+  await input.waitFor({ timeout: 15000 });
+  const draft = await email.count() ? "test@example.invalid" : "Thumbnail Studio input check";
+  await input.fill(draft);
+  await input.press("End");
+  await input.press("Backspace");
+  const value = await input.evaluate(el => el.isContentEditable ? el.textContent : el.value);
+  assert.equal(value, draft.slice(0, -1), "ChatGPT must accept keyboard edits");
+  await input.fill("");
+  await remotePage.evaluate(() => history.replaceState(history.state, "", location.href));
+  await page.waitForTimeout(300);
+  await assertVisible();
   await mkdir("artifacts", { recursive: true });
   const capture = await app.evaluate(async ({ webContents }) => {
     const remote = webContents
@@ -61,9 +69,7 @@ try {
       Buffer.from(capture, "base64"),
     );
   await page.screenshot({ path: "artifacts/desktop-live-shell.png" });
-  console.log(JSON.stringify(result, null, 2));
-  if (!result?.text || !/chatgpt/i.test(result.title))
-    throw new Error("ChatGPT did not reach its real page");
+  console.log("PASS: live ChatGPT view stays visible after background loads and same-document navigation; input accepts typing and keyboard edits. No credentials or messages submitted.");
 } finally {
   await app.close();
   if (

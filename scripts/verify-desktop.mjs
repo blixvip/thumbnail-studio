@@ -50,6 +50,20 @@ try {
     null,
     { timeout: 15000 },
   );
+  // Real same-document navigation fires start/stop-loading without finish-load.
+  await app.evaluate(async ({ webContents }) => {
+    const remote = webContents.getAllWebContents().find(w => w.getURL().includes("qa-chat.html"));
+    await remote.executeJavaScript("history.pushState({}, '', '#conversation')");
+  });
+  await page.waitForTimeout(250);
+  assert.equal((await page.evaluate(() => window.thumbnail.status())).status, "ready",
+    "ChatGPT must stay visible after same-document navigation");
+  await app.evaluate(async ({ webContents }) => {
+    const remote = webContents.getAllWebContents().find(w => w.getURL().includes("qa-chat.html"));
+    await remote.executeJavaScript("new Promise(resolve => { const f = document.createElement('iframe'); f.onload = resolve; f.src = 'about:blank'; document.body.append(f); })");
+  });
+  assert.equal((await page.evaluate(() => window.thumbnail.status())).status, "ready",
+    "Background frames must not hide ChatGPT");
   const total = await page.locator("#count").textContent();
   assert.match(total, /\d/);
   await page.locator(".image").first().click();
