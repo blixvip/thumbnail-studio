@@ -1,5 +1,6 @@
 # Local configuration and credentials
 .env
+.desktop-runtime.json
 .env.*
 !.env.example
 *.pem

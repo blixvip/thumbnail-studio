@@ -1,0 +1,388 @@
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #22262a;
+  background: #fff;
+  font-synthesis: none;
+  font-size: 13px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  background: #fff;
+  color: inherit;
+  border: 1px solid #e1e4e7;
+  border-radius: 8px;
+  padding: 8px 12px;
+  transition: background 0.12s;
+}
+button:hover {
+  background: #f0f2f3;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #536fbd;
+  outline-offset: 2px;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+[hidden] {
+  display: none !important;
+}
+header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #e6e8eb;
+  gap: 12px;
+  background: #fff;
+}
+.brand {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.5px;
+}
+.brand svg {
+  width: 25px;
+  height: 25px;
+}
+.brand rect {
+  fill: #536fbd;
+}
+.brand path {
+  fill: white;
+}
+nav {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+nav button {
+  border-color: transparent;
+  padding: 7px 11px;
+  font-size: 12px;
+}
+nav button[aria-pressed="true"] {
+  background: #eef1f8;
+  color: #355298;
+}
+.icon {
+  font-size: 21px;
+  line-height: 18px;
+}
+aside {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  width: 340px;
+  border-right: 1px solid #e6e8eb;
+  background: #f8f9fb;
+  overflow-y: auto;
+  padding-bottom: 61px;
+  scrollbar-width: thin;
+}
+.panel-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 23px 18px 12px;
+  background: #f8f9bf;
+  background: #f8f9fb;
+}
+h1 {
+  font-size: 21px;
+  line-height: 1.3;
+  letter-spacing: -0.7px;
+  font-weight: 650;
+  margin: 0 0 5px;
+}
+.panel-head p {
+  font-size: 12px;
+  color: #6c727a;
+  margin: 0 0 20px;
+}
+input[type="search"] {
+  width: 100%;
+  height: 37px;
+  border: 1px solid #dfe3e8;
+  background: #fff;
+  border-radius: 8px;
+  padding: 0 11px;
+  color: #22262a;
+}
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-top: 9px;
+}
+.filters select {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #dfe3e8;
+  border-radius: 8px;
+  padding: 8px;
+  background: white;
+  color: #525860;
+}
+.filters button {
+  font-size: 19px;
+  line-height: 17px;
+  min-width: 38px;
+  padding: 8px;
+}
+.filters button[aria-pressed="true"] {
+  color: #355298;
+  background: #eaf0ff;
+}
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #767d85;
+  font-size: 11px;
+  margin-top: 15px;
+}
+.meta label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.meta input {
+  accent-color: #536fbd;
+}
+#gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 10px;
+  padding: 0 18px 16px;
+}
+.card {
+  min-width: 0;
+}
+.image {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: #e7e9ed;
+  border-radius: 8px;
+  display: block;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  position: relative;
+}
+.image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.image:hover img {
+  filter: brightness(0.85);
+}
+.image:after {
+  content: "Copy image";
+  position: absolute;
+  inset: auto 4px 5px;
+  color: #fff;
+  font-size: 10px;
+  opacity: 0;
+  text-shadow: 0 1px 5px #000;
+}
+.image:hover:after,
+.image:focus-visible:after {
+  opacity: 1;
+}
+.image.copied {
+  outline: 2px solid #536fbd;
+  outline-offset: 2px;
+}
+.card-bottom {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-top: 5px;
+}
+.source-link {
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  color: #6c727a;
+  background: none;
+}
+.favorite {
+  border: 0;
+  background: none;
+  font-size: 17px;
+  padding: 0 2px;
+  line-height: 21px;
+  color: #9298a0;
+}
+.favorite[aria-pressed="true"] {
+  color: #536fbd;
+}
+#empty {
+  text-align: center;
+  padding: 35px 22px;
+  color: #606873;
+}
+#empty p {
+  font-weight: 600;
+  color: #30363d;
+}
+#empty span {
+  font-size: 12px;
+}
+#more {
+  display: block;
+  margin: 0 auto 20px;
+  background: #fff;
+  font-size: 12px;
+}
+.panel-foot {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 339px;
+  padding: 15px 19px;
+  background: #f8f9bf;
+  background: #f8f9fb;
+  border-top: 1px solid #e6e8eb;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #767d85;
+  min-height: 49px;
+}
+.panel-foot.success {
+  color: #355298;
+  background: #eef1f8;
+}
+.panel-foot.error {
+  color: #a23939;
+}
+main {
+  position: absolute;
+  left: 340px;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+main h2 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+main p {
+  color: #787e86;
+  font-size: 13px;
+}
+main button {
+  margin: 12px 3px;
+}
+.loader {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #e6e8ed;
+  border-top-color: #536fbd;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+.collapsed aside {
+  display: none;
+}
+.collapsed main {
+  left: 0;
+}
+.skeleton {
+  height: 80px;
+  border-radius: 8px;
+  background: #e8ebef;
+  animation: pulse 1.3s ease-in-out infinite;
+}
+.has-chat #chat-state {
+  visibility: hidden;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+@media (max-width: 759px) {
+  aside {
+    width: 100%;
+    border-right: 0;
+  }
+  .panel-foot {
+    width: 100%;
+  }
+  .panel-head {
+    padding-top: 20px;
+  }
+  #gallery {
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  }
+  main {
+    display: none;
+  }
+  .collapsed main {
+    display: grid;
+  }
+  header {
+    padding: 0 12px;
+    gap: 4px;
+  }
+  .brand {
+    font-size: 15px;
+    gap: 6px;
+  }
+  .brand svg {
+    width: 21px;
+  }
+  nav {
+    gap: 0;
+  }
+  nav button {
+    padding: 7px;
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

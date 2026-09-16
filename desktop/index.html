@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'"
+    />
+    <title>Thumbnail Studio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="studio.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <svg viewBox="0 0 28 28" aria-hidden="true">
+          <rect x="1" y="1" width="26" height="26" rx="8" />
+          <path d="M7 15V8h10M11 20h10V10" />
+          <circle cx="8" cy="20" r="2" /></svg
+        ><span>Thumbnail <span class="studio-word">Studio</span></span>
+      </div>
+      <nav aria-label="Workspace">
+        <button id="toggle" aria-pressed="true">References</button
+        ><button id="skills-toggle" aria-pressed="false">Skills</button
+        ><button id="new">New chat</button
+        ><button
+          id="reload"
+          class="icon"
+          aria-label="Reload ChatGPT"
+          title="Reload ChatGPT"
+        >
+          ↻
+        </button>
+      </nav>
+    </header>
+    <aside id="references">
+      <section id="reference-panel">
+        <div class="panel-head">
+          <h1>Find your direction.</h1>
+          <p>Pick a reference. Make it your own.</p>
+          <input
+            id="search"
+            type="search"
+            placeholder="Search references"
+            aria-label="Search references"
+          />
+          <div class="filters">
+            <select id="source" aria-label="Filter by source">
+              <option value="">All sources</option></select
+            ><button
+              id="favorites"
+              aria-pressed="false"
+              aria-label="Show favorites"
+            >
+              ♡
+            </button>
+          </div>
+          <div class="meta">
+            <span id="count" role="status">Loading references…</span
+            ><label
+              ><input id="thumbnails" type="checkbox" checked />16:9</label
+            >
+          </div>
+        </div>
+        <div id="gallery" aria-busy="true"></div>
+        <div id="empty" hidden>
+          <p id="empty-title">No references found.</p>
+          <span id="empty-detail">Try another search or source.</span>
+        </div>
+        <button id="more" hidden>Show more</button>
+      </section>
+      <section id="skills-panel" hidden>
+        <div id="skill-browser">
+          <div class="panel-head">
+            <span class="eyebrow">YOUR CREATIVE TOOLKIT</span>
+            <h1>A sharper starting point.</h1>
+            <p>Choose a skill. Bring your video idea.</p>
+            <div
+              id="skill-filters"
+              class="skill-filters"
+              aria-label="Skill categories"
+            >
+              <button data-category="All" aria-pressed="true">All</button
+              ><button data-category="Plan" aria-pressed="false">Plan</button
+              ><button data-category="Design" aria-pressed="false">
+                Design</button
+              ><button data-category="Explore" aria-pressed="false">
+                Explore</button
+              ><button data-category="Refine" aria-pressed="false">
+                Refine
+              </button>
+            </div>
+          </div>
+          <div id="skill-list" aria-live="polite"></div>
+          <p id="skill-loading" class="skill-loading" role="status">
+            Loading design skills…
+          </p>
+          <button id="retry-skills" hidden>Try again</button>
+        </div>
+        <div id="skill-detail" hidden>
+          <button id="back-skills" class="back-button">← All skills</button
+          ><span id="skill-category" class="eyebrow"></span>
+          <h1 id="skill-title"></h1>
+          <p id="skill-description"></p>
+          <label class="brief-label" for="video-brief">Your video idea</label
+          ><textarea
+            id="video-brief"
+            maxlength="2400"
+            rows="5"
+            placeholder="e.g. I tried building a gaming PC for $300. Make the budget constraint obvious. Minimal text."
+          ></textarea>
+          <div class="brief-meta">
+            <span>Title, audience, style, or constraints.</span
+            ><span id="brief-count">0 / 2,400</span>
+          </div>
+          <button id="copy-skill" class="primary" disabled>Copy prompt</button>
+          <p class="paste-note">
+            Attach any references in ChatGPT, then paste this prompt and send.
+          </p>
+          <details class="skill-method">
+            <summary>What this skill does</summary>
+            <div id="skill-instructions"></div>
+          </details>
+          <details id="prompt-preview" class="skill-method" hidden>
+            <summary>Review your prompt</summary>
+            <textarea
+              id="prepared-prompt"
+              aria-label="Prepared prompt"
+              readonly
+              rows="10"
+            ></textarea>
+          </details>
+        </div>
+      </section>
+      <div class="panel-foot" id="notice" role="status">
+        Copy an image, then paste it into ChatGPT.
+      </div>
+    </aside>
+    <main id="chat-area">
+      <div id="chat-state" role="status">
+        <span class="loader"></span>
+        <h2>Opening ChatGPT</h2>
+        <p>Your thumbnail workspace is getting ready.</p>
+      </div>
+      <div id="chat-error" hidden>
+        <h2>ChatGPT couldn’t load.</h2>
+        <p>Check your connection, then try again.</p>
+        <button id="retry">Try again</button
+        ><button id="browser">Open in browser</button>
+      </div>
+    </main>
+  </body>
+</html>

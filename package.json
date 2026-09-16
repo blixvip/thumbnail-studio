@@ -1,9 +1,13 @@
 {
-  "name": "thumbnail-generator",
-  "version": "0.1.0",
+  "name": "thumbnail-studio",
+  "version": "0.2.0",
   "private": true,
+  "main": "desktop/main.cjs",
   "type": "module",
   "scripts": {
+    "desktop": "node scripts/launch-desktop.cjs",
+    "test:desktop": "node --test tests/desktop.test.cjs tests/design-skills.test.cjs",
+    "verify:desktop": "node scripts/verify-desktop.mjs",
     "test": "python -m unittest discover -s tests -v",
     "import": "python -m thumbnail_library import",
     "start": "python -m thumbnail_library serve",
@@ -11,6 +15,7 @@
     "verify-ui": "node scripts/verify-ui.mjs"
   },
   "devDependencies": {
+    "electron": "43.4.1",
     "playwright": "1.63.0"
   }
 }

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "hook-strategy",
+    "title": "Find the hook",
+    "description": "Turn a video idea into three clear reasons to click.",
+    "category": "Plan"
+  },
+  {
+    "id": "reference-remix",
+    "title": "Remix a reference",
+    "description": "Borrow the visual principles. Make an original thumbnail.",
+    "category": "Plan"
+  },
+  {
+    "id": "composition",
+    "title": "Build the composition",
+    "description": "One focal point, clean hierarchy, and a readable layout.",
+    "category": "Design"
+  },
+  {
+    "id": "thumbnail-copy",
+    "title": "Write thumbnail text",
+    "description": "Short, specific words that complement your title.",
+    "category": "Design"
+  },
+  {
+    "id": "color-contrast",
+    "title": "Fix color & contrast",
+    "description": "Separate the subject and make the important detail pop.",
+    "category": "Design"
+  },
+  {
+    "id": "face-emotion",
+    "title": "Direct the expression",
+    "description": "Natural emotion, useful eyelines, and flattering lighting.",
+    "category": "Design"
+  },
+  {
+    "id": "product-hero",
+    "title": "Spotlight a product",
+    "description": "Make a tool, object, or screen the unmistakable hero.",
+    "category": "Design"
+  },
+  {
+    "id": "before-after",
+    "title": "Show the transformation",
+    "description": "A fair, immediately understandable before-and-after.",
+    "category": "Design"
+  },
+  {
+    "id": "faceless-story",
+    "title": "Design without a face",
+    "description": "Tell the story with objects, scale, and visual tension.",
+    "category": "Design"
+  },
+  {
+    "id": "concept-variations",
+    "title": "Explore three directions",
+    "description": "Create meaningfully different concepts, not color swaps.",
+    "category": "Explore"
+  },
+  {
+    "id": "mobile-check",
+    "title": "Check the small version",
+    "description": "Find what disappears when the thumbnail gets tiny.",
+    "category": "Refine"
+  },
+  {
+    "id": "final-polish",
+    "title": "Give it a final pass",
+    "description": "Review the details and write precise finishing edits.",
+    "category": "Refine"
+  }
+]
