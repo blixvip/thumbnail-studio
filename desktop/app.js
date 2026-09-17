@@ -102,7 +102,7 @@ function render() {
   );
   $("#gallery").replaceChildren(...items.slice(0, limit).map(card));
   $("#gallery").setAttribute("aria-busy", "false");
-  $("#count").textContent = `${items.length.toLocaleString()} references`;
+  $("#count").textContent = `${items.length.toLocaleString()} ${items.length === 1 ? "reference" : "references"}`;
   $("#more").hidden = items.length <= limit;
   $("#empty").hidden = items.length > 0;
   $("#empty-title").textContent = library.images.length
@@ -194,14 +194,28 @@ function renderSkills() {
       .map((skill) => {
         const button = node("button", "", "skill-card");
         button.dataset.skill = skill.id;
+        button.dataset.skillCategory = skill.category;
+        const icon = node("span", "", "skill-symbol");
+        icon.setAttribute("aria-hidden", "true");
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("viewBox", "0 0 24 24");
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", {
+          Plan: "M4 5h16v12H9l-5 4V5Zm4 4h8M8 13h5",
+          Design: "M4 9V4h5m6 0h5v5m0 6v5h-5m-6 0H4v-5M8 12h8m-4-4v8",
+          Explore: "m12 3 9 9-9 9-9-9 9-9Zm0 5v8m-4-4h8",
+          Refine: "m5 12 4 4L19 6M4 21h16",
+        }[skill.category]);
+        svg.append(path);
+        icon.append(svg);
         const text = node("span", "", "skill-copy");
         text.append(
           node("strong", skill.title),
           node("span", skill.description),
         );
-        const arrow = node("span", "↗", "skill-arrow");
+        const arrow = node("span", "›", "skill-arrow");
         arrow.setAttribute("aria-hidden", "true");
-        button.append(text, arrow);
+        button.append(icon, text, arrow);
         button.onclick = () => chooseSkill(skill);
         return button;
       }),

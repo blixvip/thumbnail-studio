@@ -18,10 +18,10 @@ exports.isChatNavigation = (value) => {
   }
 };
 exports.chatBounds = (width, height, references) => ({
-  x: references && width >= 760 ? 340 : 0,
-  y: 60,
-  width: Math.max(1, width - (references && width >= 760 ? 340 : 0)),
-  height: Math.max(1, height - 60),
+  x: references && width >= 760 ? 380 : 0,
+  y: 68,
+  width: Math.max(1, width - (references && width >= 760 ? 380 : 0)),
+  height: Math.max(1, height - 68),
   visible: !(references && width < 760),
 });
 exports.mediaPath = (value, known) =>

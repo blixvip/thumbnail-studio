@@ -21,16 +21,16 @@ test("ChatGPT and sign-in URLs stay embedded; unrelated or unsafe URLs do not", 
 test("ChatGPT fills the window when references are closed", () => {
   assert.deepEqual(chatBounds(1200, 800, false), {
     x: 0,
-    y: 60,
+    y: 68,
     width: 1200,
-    height: 740,
+    height: 732,
     visible: true,
   });
   assert.deepEqual(chatBounds(1200, 800, true), {
-    x: 340,
-    y: 60,
-    width: 860,
-    height: 740,
+    x: 380,
+    y: 68,
+    width: 820,
+    height: 732,
     visible: true,
   });
 });

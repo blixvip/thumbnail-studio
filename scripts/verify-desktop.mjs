@@ -81,7 +81,10 @@ try {
   for (const [width, height] of [
     [1360, 900],
     [760, 820],
+    [758, 820],
+    [580, 820],
     [390, 844],
+    [380, 844],
   ]) {
     await app.evaluate(
       ({ BrowserWindow }, size) =>
@@ -95,8 +98,28 @@ try {
       ),
       `Overflow at ${width}`,
     );
+    const shellBounds = await page.evaluate(() => ({
+      header: document.querySelector("header").getBoundingClientRect().bottom,
+      panel: document.querySelector("aside").getBoundingClientRect().right,
+      nav: document.querySelector("nav").getBoundingClientRect().right,
+      width: innerWidth,
+    }));
+    const nativeBounds = await app.evaluate(({ BrowserWindow }) => {
+      const view = BrowserWindow.getAllWindows()[0].contentView.children.find(
+        (v) => v.webContents?.getURL().includes("qa-chat"),
+      );
+      return { ...view.getBounds(), visible: view.getVisible() };
+    });
+    assert.equal(nativeBounds.y, shellBounds.header, `Toolbar alignment at ${width}`);
+    // Windows display scaling can round requested sizes to a neighboring DIP.
+    assert.equal(nativeBounds.visible, shellBounds.width >= 760, `Chat visibility at ${width}`);
+    if (shellBounds.width >= 760) assert.equal(nativeBounds.x, shellBounds.panel, `Panel alignment at ${width}`);
+    assert(shellBounds.nav <= shellBounds.width, `Toolbar controls clipped at ${width}`);
     await page.screenshot({ path: `artifacts/desktop-${width}.png` });
   }
+  await app.evaluate(({ BrowserWindow }) =>
+    BrowserWindow.getAllWindows()[0].setContentSize(390, 844),
+  );
   await page.getByRole("button", { name: "References", exact: true }).click();
   assert(
     await page
@@ -111,6 +134,13 @@ try {
   });
   assert.equal(hiddenBounds.x, 0);
   assert.equal(hiddenBounds.width, 390);
+  // Render the same status event used during navigation to inspect loading UI.
+  await app.evaluate(({ BrowserWindow }) => {
+    BrowserWindow.getAllWindows()[0].webContents.send("thumbnail:status", { status: "loading" });
+  });
+  await page.locator("body:not(.has-chat)").waitFor();
+  await page.screenshot({ path: "artifacts/desktop-loading.png" });
+  await page.evaluate(async () => chatStatus(await window.thumbnail.status()));
   await page.getByRole("button", { name: "References", exact: true }).click();
   await page.getByLabel("Search references").fill("nothing-matches-239348");
   await page.getByText("No references found.").waitFor();

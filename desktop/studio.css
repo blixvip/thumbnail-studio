@@ -1,247 +1,47 @@
-/* Thumbnail Studio: quiet chrome, clear controls, and room for the work. */
-:root {
-  --studio-accent: #536fbd;
-  --studio-ink: #22262a;
-}
-.brand {
-  letter-spacing: -0.55px;
-  white-space: nowrap;
-}
-.brand svg {
-  width: 28px;
-  height: 28px;
-  flex: none;
-}
-.brand rect {
-  fill: var(--studio-accent);
-}
-.brand path {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 2.1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.brand circle {
-  fill: #ffd49a;
-}
-.studio-word {
-  font-weight: 400;
-  color: #69717d;
-}
-.eyebrow {
-  display: block;
-  font-size: 9px;
-  font-weight: 650;
-  letter-spacing: 1.15px;
-  color: #7b8595;
-  margin-bottom: 10px;
-}
-#skills-panel .panel-head {
-  padding-bottom: 14px;
-}
-#skills-panel .panel-head h1 {
-  font-size: 20px;
-}
-#skills-panel .panel-head p {
-  margin-bottom: 15px;
-}
-.skill-filters {
-  display: flex;
-  gap: 3px;
-}
-.skill-filters button {
-  flex: 1;
-  padding: 6px 4px;
-  border-color: transparent;
-  font-size: 10px;
-  color: #707784;
-  background: none;
-}
-.skill-filters button[aria-pressed="true"] {
-  background: #e9edf8;
-  color: #355298;
-}
-#skill-list {
-  padding: 0 18px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.skill-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 12px;
-  text-align: left;
-  border-color: #e4e7ed;
-  border-radius: 10px;
-}
-.skill-card:hover {
-  border-color: #bfcbea;
-  background: #fff;
-}
-.skill-copy {
-  min-width: 0;
-  flex: 1;
-}
-.skill-copy strong {
-  display: block;
-  font-size: 12px;
-  line-height: 1.4;
-  font-weight: 600;
-}
-.skill-copy > span {
-  display: block;
-  font-size: 11px;
-  color: #818894;
-  line-height: 1.5;
-  margin-top: 4px;
-}
-.skill-arrow {
-  color: #8798c4;
-  font-size: 15px;
-}
-.skill-loading {
-  text-align: center;
-  color: #7b8595;
-  padding: 18px;
-}
-#retry-skills {
-  display: block;
-  margin: 0 auto;
-}
-#skill-detail {
-  padding: 17px 18px 24px;
-}
-.back-button {
-  border: none;
-  background: none;
-  font-size: 11px;
-  color: #69717d;
-  padding: 6px 0;
-  margin-bottom: 24px;
-}
-#skill-title {
-  font-size: 23px;
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-#skill-description {
-  color: #747d8a;
-  line-height: 1.6;
-  margin: 0 0 26px;
-  font-size: 12px;
-}
-.brief-label {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 9px;
-}
-#video-brief,
-#prepared-prompt {
-  resize: vertical;
-  width: 100%;
-  min-height: 135px;
-  max-height: 420px;
-  border: 1px solid #dce2eb;
-  border-radius: 9px;
-  font: inherit;
-  font-size: 12px;
-  line-height: 1.65;
-  background: #fff;
-  padding: 11px;
-  color: var(--studio-ink);
-}
-#video-brief::placeholder {
-  color: #9ba2ad;
-}
-textarea:focus-visible {
-  outline: 2px solid var(--studio-accent);
-  outline-offset: 2px;
-}
-.brief-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  font-size: 9px;
-  color: #929aa6;
-  margin: 6px 0 19px;
-}
-.brief-meta span:last-child {
-  white-space: nowrap;
-}
-.primary {
-  width: 100%;
-  background: var(--studio-accent);
-  border-color: var(--studio-accent);
-  color: #fff;
-  min-height: 39px;
-  font-size: 12px;
-  font-weight: 600;
-}
-.primary:hover:not(:disabled) {
-  background: #435ea9;
-}
-.primary:disabled {
-  background: #e4e8f1;
-  color: #929db5;
-  border-color: #e4e8f1;
-  opacity: 1;
-  cursor: not-allowed;
-}
-.paste-note {
-  font-size: 10px;
-  color: #848d9b;
-  line-height: 1.65;
-  margin: 12px 0 24px;
-}
-.skill-method {
-  border-top: 1px solid #e2e6ed;
-  padding: 13px 0;
-}
-.skill-method summary {
-  cursor: pointer;
-  font-size: 11px;
-  color: #687587;
-}
-.skill-method p {
-  font-size: 11px;
-  color: #7b8595;
-  line-height: 1.75;
-}
-#prepared-prompt {
-  font-size: 10px;
-  margin-top: 12px;
-  min-height: 170px;
-}
-@media (max-width: 520px) {
-  .brand {
-    font-size: 14px;
-    gap: 6px;
-  }
-  .brand svg {
-    width: 23px;
-    height: 23px;
-  }
-  #reload {
-    display: none;
-  }
-  nav button {
-    padding: 7px 6px;
-    font-size: 10px;
-  }
-  #skill-list {
-    gap: 10px;
-  }
-  .skill-card {
-    padding: 15px 13px;
-  }
-  .skill-copy strong {
-    font-size: 13px;
-  }
-  .skill-copy > span {
-    font-size: 12px;
-  }
-}
+/* Studio identity and the design toolkit. Shared colors live in style.css. */
+.brand { letter-spacing: -.55px; white-space: nowrap; }
+.brand svg { width: 30px; height: 30px; flex: none; stroke: none; }
+.brand rect { fill: #536fbd; }
+.brand path { fill: none; stroke: #fff; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+.brand circle { fill: #ffd49a; }
+.studio-word { font-weight: 400; color: var(--muted); }
+.eyebrow { display: block; font-size: 10px; font-weight: 600; letter-spacing: 1.35px; color: var(--accent); margin-bottom: 11px; }
+#skills-panel .panel-head { padding-bottom: 16px; }
+#skills-panel .panel-head p { margin-bottom: 21px; }
+.skill-filters { display: flex; padding: 4px; gap: 2px; background: var(--canvas); border: 1px solid var(--line); border-radius: 9px; }
+.skill-filters button { flex: 1; padding: 7px 3px; border: 0; font-size: 11px; color: var(--muted); background: none; border-radius: 5px; }
+.skill-filters button:hover { background: var(--surface); color: var(--ink); }
+.skill-filters button[aria-pressed="true"] { background: #343c4c; color: #e0e7f9; }
+#skill-list { padding: 0 22px 20px; display: flex; flex-direction: column; gap: 9px; }
+.skill-card { display: flex; align-items: center; gap: 12px; padding: 15px 12px; text-align: left; border-color: var(--line); border-radius: 10px; background: #1c1f25; }
+.skill-card:hover { border-color: #576482; background: #242933; }
+.skill-symbol { display: grid; place-items: center; width: 33px; height: 38px; flex: none; color: #a9bbee; }
+.skill-symbol svg { width: 24px; height: 24px; }
+.skill-card[data-skill-category="Design"] .skill-symbol { color: #b1c7bd; }
+.skill-card[data-skill-category="Explore"] .skill-symbol { color: #d0bddc; }
+.skill-card[data-skill-category="Refine"] .skill-symbol { color: #d8c299; }
+.skill-copy { min-width: 0; flex: 1; }
+.skill-copy strong { display: block; font-size: 13px; line-height: 1.4; font-weight: 600; }
+.skill-copy > span { display: block; font-size: 11px; color: var(--muted); line-height: 1.6; margin-top: 5px; }
+.skill-arrow { color: #8492ae; font-size: 22px; }
+.skill-loading { text-align: center; color: var(--muted); padding: 18px; }
+#retry-skills { display: block; margin: 0 auto; }
+#skill-detail { padding: 20px 22px 24px; }
+.back-button { display: block; border: 0; background: none; font-size: 12px; color: var(--muted); padding: 6px 0; margin-bottom: 26px; }
+.back-button:hover { color: var(--ink); background: none; }
+#skill-title { font-size: 26px; line-height: 1.2; margin-bottom: 12px; }
+#skill-description { color: var(--muted); line-height: 1.7; margin: 0 0 28px; font-size: 13px; }
+.brief-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+#video-brief, #prepared-prompt { resize: vertical; width: 100%; min-height: 156px; max-height: 420px; border: 1px solid #414957; border-radius: 10px; font: inherit; font-size: 13px; line-height: 1.7; background: var(--canvas); padding: 13px; color: var(--ink); }
+.brief-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 10px; line-height: 1.5; color: var(--muted); margin: 8px 0 22px; }
+.brief-meta span:last-child { white-space: nowrap; font-family: Consolas, monospace; }
+.primary { width: 100%; background: var(--accent); border-color: var(--accent); color: #171e30; min-height: 44px; font-size: 13px; font-weight: 650; }
+.primary:hover:not(:disabled) { background: #b5c5fc; border-color: #b5c5fc; }
+.primary:disabled { background: #30394d; color: #a7b3cf; border-color: #3b4864; opacity: 1; cursor: not-allowed; }
+.paste-note { font-size: 11px; color: var(--muted); line-height: 1.7; margin: 13px 0 27px; }
+.skill-method { border-top: 1px solid var(--line); padding: 16px 0; }
+.skill-method summary { cursor: pointer; font-size: 12px; color: #c2ccdc; }
+.skill-method summary:hover { color: var(--ink); }
+.skill-method p { font-size: 12px; color: var(--muted); line-height: 1.8; white-space: pre-line; }
+#prepared-prompt { font-size: 11px; margin-top: 13px; min-height: 170px; }
+@media (max-width: 580px) { .brand svg { width: 28px; height: 28px; } }

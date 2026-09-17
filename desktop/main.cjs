@@ -178,7 +178,7 @@ async function boot() {
     minHeight: 560,
     title: "Thumbnail Studio",
     icon: path.join(__dirname, "thumbnail.ico"),
-    backgroundColor: "#ffffff",
+    backgroundColor: "#111318",
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.cjs"),

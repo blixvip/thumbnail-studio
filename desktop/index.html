@@ -22,30 +22,36 @@
         ><span>Thumbnail <span class="studio-word">Studio</span></span>
       </div>
       <nav aria-label="Workspace">
-        <button id="toggle" aria-pressed="true">References</button
-        ><button id="skills-toggle" aria-pressed="false">Skills</button
-        ><button id="new">New chat</button
+        <div class="workspace-tabs">
+        <button id="toggle" aria-pressed="true"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="m3 13 4-4 4 4 2-2 4 4"/><circle cx="13" cy="7" r="1"/></svg>References</button
+        ><button id="skills-toggle" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2 2.3 5.7L18 10l-5.7 2.3L10 18l-2.3-5.7L2 10l5.7-2.3Z"/></svg>Skills</button>
+        </div>
+        <button id="new"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg>New chat</button
         ><button
           id="reload"
           class="icon"
           aria-label="Reload ChatGPT"
           title="Reload ChatGPT"
         >
-          ↻
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 8a6 6 0 1 0 .1 4M16 3v5h-5"/></svg>
         </button>
       </nav>
     </header>
     <aside id="references">
       <section id="reference-panel">
         <div class="panel-head">
-          <h1>Find your direction.</h1>
-          <p>Pick a reference. Make it your own.</p>
+          <span class="eyebrow">INSPIRATION LIBRARY</span>
+          <h1>Find your next idea.</h1>
+          <p>A reference today. Your thumbnail next.</p>
+          <div class="search-field">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg>
           <input
             id="search"
             type="search"
             placeholder="Search references"
             aria-label="Search references"
           />
+          </div>
           <div class="filters">
             <select id="source" aria-label="Filter by source">
               <option value="">All sources</option></select
@@ -54,18 +60,19 @@
               aria-pressed="false"
               aria-label="Show favorites"
             >
-              ♡
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17 3.5 10.5C-1 6 5 0 10 6c5-6 11 0 6.5 4.5Z"/></svg>
             </button>
           </div>
           <div class="meta">
             <span id="count" role="status">Loading references…</span
             ><label
-              ><input id="thumbnails" type="checkbox" checked />16:9</label
+              ><input id="thumbnails" type="checkbox" checked />16:9 only</label
             >
           </div>
         </div>
         <div id="gallery" aria-busy="true"></div>
         <div id="empty" hidden>
+          <svg class="empty-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="28" height="24" rx="5"/><path d="m7 26 9-9 7 7 4-4 7 7"/><circle cx="27" cy="15" r="2"/></svg>
           <p id="empty-title">No references found.</p>
           <span id="empty-detail">Try another search or source.</span>
         </div>
@@ -75,8 +82,8 @@
         <div id="skill-browser">
           <div class="panel-head">
             <span class="eyebrow">YOUR CREATIVE TOOLKIT</span>
-            <h1>A sharper starting point.</h1>
-            <p>Choose a skill. Bring your video idea.</p>
+            <h1>Make the idea click.</h1>
+            <p>Focused workflows for a better thumbnail.</p>
             <div
               id="skill-filters"
               class="skill-filters"
