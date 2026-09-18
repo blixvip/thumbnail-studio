@@ -5,6 +5,7 @@ contextBridge.exposeInMainWorld("thumbnail", {
     ipcRenderer.invoke("thumbnail:references", Boolean(open)),
   copy: (id) => ipcRenderer.invoke("thumbnail:copy", id),
   chat: (action) => ipcRenderer.invoke("thumbnail:chat", action),
+  template: (open) => ipcRenderer.invoke("thumbnail:template", Boolean(open)),
   external: (url) => ipcRenderer.invoke("thumbnail:external", url),
   onStatus: (listener) => {
     ipcRenderer.on("thumbnail:status", (_event, state) => listener(state));

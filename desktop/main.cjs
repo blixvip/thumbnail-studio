@@ -40,6 +40,7 @@ protocol.registerSchemesAsPrivileged([
 let win,
   chat,
   references = true,
+  template = false,
   state = { status: "loading" };
 let library = { images: [], sources: [] },
   known = new Set(),
@@ -54,7 +55,8 @@ function layout() {
   const [width, height] = win.getContentSize();
   const { visible, ...bounds } = chatBounds(width, height, references);
   chat.setBounds(bounds);
-  chat.setVisible(visible && state.status === "ready");
+  // The thumbnail template covers the chat area, so ChatGPT is hidden while it's open.
+  chat.setVisible(visible && state.status === "ready" && !template);
 }
 function local(event) {
   if (
@@ -131,7 +133,7 @@ async function boot() {
     const name = url.pathname.slice(1);
     let file;
     if (
-      ["index.html", "app.js", "style.css", "studio.css"].includes(name) ||
+      ["index.html", "app.js", "style.css", "studio.css", "template.js", "template.css"].includes(name) ||
       (QA && name === "qa-chat.html")
     )
       file = path.join(__dirname, name);
@@ -188,6 +190,17 @@ async function boot() {
     },
   });
   win.setMenu(null);
+  // Template downloads go straight to Downloads (never overwriting) instead of a save dialog.
+  win.webContents.session.on("will-download", (_event, item) => {
+    const folder = QA ? app.getPath("userData") : app.getPath("downloads");
+    const { name, ext } = path.parse(item.getFilename());
+    let file = path.join(folder, `${name}${ext}`);
+    for (let i = 2; require("node:fs").existsSync(file); i++) file = path.join(folder, `${name}-${i}${ext}`);
+    item.setSavePath(file);
+    item.once("done", (_e, outcome) =>
+      status({ ...state, message: outcome === "completed" ? `Saved to Downloads as ${path.basename(file)}.` : "The thumbnail could not be saved." }),
+    );
+  });
   win.webContents.on("will-navigate", (event) => event.preventDefault());
   win.webContents.setWindowOpenHandler(() => ({ action: "deny" }));
   chat = new WebContentsView({
@@ -255,6 +268,11 @@ ipcMain.handle("thumbnail:status", (event) => {
 ipcMain.handle("thumbnail:references", (event, open) => {
   local(event);
   references = Boolean(open);
+  layout();
+});
+ipcMain.handle("thumbnail:template", (event, open) => {
+  local(event);
+  template = Boolean(open);
   layout();
 });
 ipcMain.handle("thumbnail:copy", async (event, id) => {
