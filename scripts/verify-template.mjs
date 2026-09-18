@@ -38,6 +38,7 @@ try {
     await page.locator(`#tpl-slot-${slot}`).click();
     await (await chooser).setFiles(file);
   }
+  await page.mouse.move(5, 5);
   await page.waitForTimeout(300);
   await shot("artifacts/template.png");
   await page.locator("#tpl-prompt").fill("s".repeat(150));
