@@ -4,6 +4,8 @@
 
 <p align="center">Your references. A better brief. ChatGPT beside you.</p>
 
+<p align="center"><a href="https://discord.gg/zEB4VjmfSb"><img src="https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"></a></p>
+
 A minimal Windows workspace for designing YouTube thumbnails: the real ChatGPT website in a native browser view, an optional local reference library, **12 built-in thumbnail-design skills**, and a one-click **Template** for "I asked ChatGPT for a thumbnail" style videos.
 
 <p align="center"><img src="docs/images/template.jpg" width="820" alt="Thumbnail Studio with the Template tab open: your photo, the chat message, and the result thumbnail"></p>
@@ -99,3 +101,7 @@ The Python tests cover the importer. Node tests cover navigation restrictions, m
 `node scripts/verify-chatgpt.mjs` separately checks the real page stays visible after background loading and same-document navigation, and accepts keyboard edits. It uses a disposable profile and submits no credentials or messages. A human-verification challenge blocks this check; successful authentication and image generation are not covered.
 
 Brand assets and interface guidance are in [`docs/brand/`](docs/brand/). No project-wide redistribution license has been assigned.
+
+## Community
+
+💬 [Join the Discord](https://discord.gg/zEB4VjmfSb) for questions, help, feedback, and updates.
