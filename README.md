@@ -100,8 +100,12 @@ The Python tests cover the importer. Node tests cover navigation restrictions, m
 
 `node scripts/verify-chatgpt.mjs` separately checks the real page stays visible after background loading and same-document navigation, and accepts keyboard edits. It uses a disposable profile and submits no credentials or messages. A human-verification challenge blocks this check; successful authentication and image generation are not covered.
 
-Brand assets and interface guidance are in [`docs/brand/`](docs/brand/). No project-wide redistribution license has been assigned.
+Brand assets and interface guidance are in [`docs/brand/`](docs/brand/).
 
 ## Community
 
 💬 [Join the Discord](https://discord.gg/zEB4VjmfSb) for questions, help, feedback, and updates.
+
+## License
+
+[MIT](LICENSE). Contributions welcome: open an issue or a pull request.
