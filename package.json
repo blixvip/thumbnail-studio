@@ -17,7 +17,7 @@
     "verify-ui": "node scripts/verify-ui.mjs"
   },
   "devDependencies": {
-    "electron": "43.4.1",
+    "electron": "43.8.7",
     "playwright": "1.63.0"
   }
 }
