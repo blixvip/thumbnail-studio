@@ -119,4 +119,8 @@ main button { margin: 12px 3px; }
   #new { font-size: 12px; }
   #new svg, #reload { display: none; }
 }
+@media (max-width: 460px) {
+  /* Three tabs + New chat need ~420px with icons; drop tab icons, keep labels. */
+  .workspace-tabs svg { display: none; }
+}
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
