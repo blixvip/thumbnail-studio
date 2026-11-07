@@ -4,7 +4,7 @@
 
 <p align="center">Your references. A better brief. ChatGPT beside you.</p>
 
-<p align="center"><a href="https://discord.gg/zEB4VjmfSb"><img src="https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"></a></p>
+<p align="center"><a href="https://discord.gg/wJfHQXfEMM"><img src="https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"></a></p>
 
 A minimal Windows workspace for designing YouTube thumbnails: the real ChatGPT website in a native browser view, an optional local reference library, **12 built-in thumbnail-design skills**, and a one-click **Template** for "I asked ChatGPT for a thumbnail" style videos.
 
@@ -104,7 +104,9 @@ Brand assets and interface guidance are in [`docs/brand/`](docs/brand/).
 
 ## Community
 
-💬 [Join the Discord](https://discord.gg/zEB4VjmfSb) for questions, help, feedback, and updates.
+**Want to send a PR? Join the [blix open source Discord](https://discord.gg/wJfHQXfEMM) first.** It's the one server for everyone contributing to any blixvip repo: questions, ideas, PR discussion, help, and release news.
+
+💬 [Join the Discord](https://discord.gg/wJfHQXfEMM) for questions, help, feedback, and updates.
 
 ## Contributors
 

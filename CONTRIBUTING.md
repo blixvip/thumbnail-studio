@@ -1,6 +1,8 @@
 # Contributing to Thumbnail Studio
 
-Thanks for helping! Questions and ideas are welcome in the **[Discord](https://discord.gg/zEB4VjmfSb)**. Report bugs in [GitHub issues](https://github.com/blixvip/thumbnail-studio/issues/new).
+> 💬 **Before you open a PR, join the [blix open source Discord](https://discord.gg/wJfHQXfEMM).** It's the home for contributors across every blixvip repo: ask questions, run ideas by us, and talk through your PR.
+
+Thanks for helping! Questions and ideas are welcome in the **[Discord](https://discord.gg/wJfHQXfEMM)**. Report bugs in [GitHub issues](https://github.com/blixvip/thumbnail-studio/issues/new).
 
 ## Finding something to work on
 
@@ -59,4 +61,4 @@ If you changed the Template, also run `node scripts/verify-template.mjs <photo> 
 - `scripts/`: the launcher, Electron finder, Playwright capture (`capture.mjs`), and end-to-end checks (`verify-*.mjs`).
 - `tests/`: Python `unittest` tests for the importer and `node:test` tests for the desktop helpers.
 
-Made a thumbnail with it? Show it off in the [Discord](https://discord.gg/zEB4VjmfSb).
+Made a thumbnail with it? Show it off in the [Discord](https://discord.gg/wJfHQXfEMM).
