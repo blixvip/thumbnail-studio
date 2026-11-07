@@ -4,7 +4,7 @@
 
 <p align="center">Your references. A better brief. ChatGPT beside you.</p>
 
-<p align="center"><a href="https://discord.gg/wJfHQXfEMM"><img src="https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"></a></p>
+<p align="center"><a href="https://discord.gg/grokbot"><img src="https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"></a></p>
 
 A minimal Windows workspace for designing YouTube thumbnails: the real ChatGPT website in a native browser view, an optional local reference library, **12 built-in thumbnail-design skills**, and a one-click **Template** for "I asked ChatGPT for a thumbnail" style videos.
 
@@ -104,9 +104,20 @@ Brand assets and interface guidance are in [`docs/brand/`](docs/brand/).
 
 ## Community
 
-**Want to send a PR? Join the [blix open source Discord](https://discord.gg/wJfHQXfEMM) first.** It's the one server for everyone contributing to any blixvip repo: questions, ideas, PR discussion, help, and release news.
+**Want to send a PR? Join the [blix open source Discord](https://discord.gg/grokbot) first.** It's the one server for everyone contributing to any blixvip repo: questions, ideas, PR discussion, help, and release news.
 
-💬 [Join the Discord](https://discord.gg/wJfHQXfEMM) for questions, help, feedback, and updates.
+💬 [Join the Discord](https://discord.gg/grokbot) for questions, help, feedback, and updates.
+
+<!-- discord-incentive:start -->
+### 💬 Why join the Discord first
+
+**[discord.gg/grokbot](https://discord.gg/grokbot)** is the one server for every blixvip repo, and it gets you more than a chat window:
+
+- 🟢 **Claim an issue and it is yours.** Say which one in `#contributors` and it is assigned to you, so two people never build the same thing twice.
+- 🏷️ **A contributor role** on the server the moment your first pull request is merged.
+- 🗺️ **A say in what gets built.** The roadmap is argued out there before it turns into issues.
+- 🙋 **A human to ask.** Stuck on setup, or unsure whether an idea is even wanted? Faster than waiting on an issue thread.
+<!-- discord-incentive:end -->
 
 ## Contributors
 
