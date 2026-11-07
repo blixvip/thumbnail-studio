@@ -10,7 +10,7 @@ main .tpl-slot { margin: 0; }
 .tpl-controls { display: flex; gap: 10px; margin-top: 16px; align-items: flex-start; }
 main .tpl-controls button { margin: 0; flex: none; min-height: 42px; padding: 0 18px; border-radius: 21px; font-weight: 600; }
 #tpl-prompt { flex: 1; min-width: 0; min-height: 42px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 21px; background: var(--surface); color: var(--ink); font-size: 14px; line-height: 1.5; resize: none; overflow: hidden; }
-#tpl-prompt:focus { outline: none; border-color: #5a6272; }
+#tpl-prompt:focus { border-color: #5a6272; }
 main .tpl-controls .tpl-primary { background: var(--ink); border-color: var(--ink); color: #20242c; }
 main .tpl-controls .tpl-primary:hover { background: #fff; border-color: #fff; }
 .tpl-hint { margin: 12px 4px 0; font-size: 12px; color: var(--muted); }

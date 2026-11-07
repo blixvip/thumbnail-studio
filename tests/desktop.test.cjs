@@ -50,3 +50,10 @@ test("only known image paths are accepted; traversal and unlisted files fail", (
     assert.equal(mediaPath(value, new Set([file])), null);
   }
 });
+
+test("template prompt preserves the shared :focus-visible outline instead of suppressing it", () => {
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const templateCss = fs.readFileSync(path.join(__dirname, "../desktop/template.css"), "utf8");
+  assert.equal(/#tpl-prompt:focus[^}]*outline\s*:\s*none/i.test(templateCss), false);
+});
