@@ -74,14 +74,29 @@ function card(item) {
   favorite.setAttribute("aria-label", `Favorite reference from ${source.name}`);
   favorite.setAttribute("aria-pressed", String(favorites.has(item.id)));
   favorite.onclick = () => {
-    favorites.has(item.id) ? favorites.delete(item.id) : favorites.add(item.id);
+    const isFavorite = favorites.has(item.id);
+    if (isFavorite) favorites.delete(item.id);
+    else favorites.add(item.id);
     try {
       localStorage.setItem(
         "thumbnail-favorites",
         JSON.stringify([...favorites]),
       );
     } catch {}
-    render();
+    favorite.textContent = favorites.has(item.id) ? "♥" : "♡";
+    favorite.setAttribute("aria-pressed", String(favorites.has(item.id)));
+    if (onlyFavorites) {
+      const cardIndex = [...$("#gallery").children].indexOf(
+        favorite.closest(".card"),
+      );
+      render();
+      const nextCard = $("#gallery").children[
+        Math.min(cardIndex, $("#gallery").children.length - 1)
+      ];
+      (nextCard?.querySelector(".favorite") || $("#favorites")).focus({
+        preventScroll: true,
+      });
+    }
   };
   meta.append(label, favorite);
   article.append(image, meta);

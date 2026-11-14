@@ -57,3 +57,16 @@ test("template prompt preserves the shared :focus-visible outline instead of sup
   const templateCss = fs.readFileSync(path.join(__dirname, "../desktop/template.css"), "utf8");
   assert.equal(/#tpl-prompt:focus[^}]*outline\s*:\s*none/i.test(templateCss), false);
 });
+
+
+test("desktop favorites update in place and restore focus after filtered removal", () => {
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const app = fs.readFileSync(path.join(__dirname, "../desktop/app.js"), "utf8");
+  assert.match(app, /favorite\.textContent = favorites\.has\(item\.id\) \? "♥" : "♡";/);
+  assert.match(app, /favorite\.setAttribute\("aria-pressed", String\(favorites\.has\(item\.id\)\)\);/);
+  assert.match(
+    app,
+    /if \(onlyFavorites\) \{[\s\S]*?render\(\);[\s\S]*?nextCard\?\.querySelector\("\.favorite"\)[\s\S]*?\$\("#favorites"\)\)\.focus\(/,
+  );
+});
